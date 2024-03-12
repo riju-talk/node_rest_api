@@ -74,7 +74,6 @@ app.get("/movie",(req,res)=>{
 
 app.get("/movie/:id",(req,res)=>{
     const id =  parseInt(req.params.id)
-    console.log(id)
     for(let movie of movies){
         if(movie.id===id){
             res.json(movie)
@@ -105,14 +104,12 @@ app.put("/movie/:id",(req,res)=>{
 
 app.delete("/movie/:id",(req,res)=>{
     const id = req.params.id;
-    console.log(id)
     movies.forEach(element => {
         if(element.id===parseInt(req.params.id)){
             console.log(element)
         }
     });
     movies = movies.filter(movie => {return movie.id != id});
-    console.log(movies)
     res.send("Movie is removed")
 })
 app.listen(port,()=>console.log(`Server is running on port ${port}`))
